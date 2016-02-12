@@ -6,15 +6,10 @@ import Chrome from '../../../modules/chrome';
 
 @autobind
 class Checkbox extends OptionsComponent {
-    constructor () {
-        super();
-    }
-
     handleChange (e) {
-        let key   = this.props.optkey,
-            value = e.target.checked;
+        const value = e.target.checked;
 
-        Chrome.setSetting(key, value);
+        Chrome.setSetting(this.props.optkey, value);
 
         this.setState({ value: value });
     }

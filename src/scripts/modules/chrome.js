@@ -44,7 +44,7 @@ class Chrome {
     }
 
     static getApps (done) {
-        var find128Image = function (icons) {
+        const find128Image = function (icons) {
             for (let icon of icons) {
                 if (icon.size === 128) {
                     return icon.url;
@@ -57,7 +57,7 @@ class Chrome {
         chrome.management.getAll(function (list) {
             // Only get active apps (no extensions)
             list = list.filter(function (a) {
-                return a.enabled && a.type !== 'extension' && a.type !== 'theme' && a.isApp
+                return a.enabled && a.type !== 'extension' && a.type !== 'theme' && a.isApp;
             });
 
             // Sort them alphabetically

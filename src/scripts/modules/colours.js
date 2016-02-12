@@ -84,9 +84,9 @@ class Colours {
      * Converts a hex colour to an RGBA string with the provided alpha value.
      */
     static rgba (hex, a) {
-        var colour = Colours.hexToRgb(hex.substring(1, 7));
+        var [r, g, b] = Colours.hexToRgb(hex.substring(1, 7));
 
-        return `rgba(${colour[0]}, ${colour[1]}, ${colour[2]}, ${a})`;
+        return `rgba(${r}, ${g}, ${b}, ${a})`;
     }
 }
 

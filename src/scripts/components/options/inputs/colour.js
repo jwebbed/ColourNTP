@@ -7,10 +7,9 @@ import Chrome from '../../../modules/chrome';
 @autobind
 class Colour extends OptionsComponent {
     handleChange (e) {
-        let key   = this.props.optkey,
-            value = e.target.value;
+        const value = e.target.value;
 
-        Chrome.setSetting(key, value);
+        Chrome.setSetting(this.props.optkey, value);
 
         this.setState({ value: value });
     }

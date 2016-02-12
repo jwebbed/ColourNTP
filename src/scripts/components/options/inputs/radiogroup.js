@@ -8,9 +8,7 @@ import Chrome from '../../../modules/chrome';
 @autobind
 class RadioGroup extends OptionsComponent {
     handleChange (val) {
-        let key = this.props.optkey;
-
-        Chrome.setSetting(key, val);
+        Chrome.setSetting(this.props.optkey, val);
 
         this.setState({ value: val });
     }
