@@ -14,8 +14,9 @@ const Time = ({ time, hourFormat24 }) => {
         <h1 className='colours__time'>
             {hour} : {time.minute} : {time.second}
 
-            { !hourFormat24 &&
-                <span className='colours__time__postfix'>{time.pm ? 'PM' : 'AM'}</span>
+            { !hourFormat24 ?
+                <span className='colours__time__postfix'>{time.pm ? 'PM' : 'AM'}</span> :
+                null
             }
         </h1>
     );

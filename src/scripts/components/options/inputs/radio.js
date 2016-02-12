@@ -23,8 +23,9 @@ const Radio = (props) => {
                 }
             </label>
 
-            { props.checked &&
-                <div className='options__content'>{props.children}</div>
+            { props.checked ?
+                <div className='options__content'>{props.children}</div> :
+                null
             }
         </div>
     );

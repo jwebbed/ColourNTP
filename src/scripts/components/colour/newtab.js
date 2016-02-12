@@ -213,50 +213,59 @@ class NewTab extends Component {
 
         return (
             <div className={state.coloursClass}>
-                { state.bgImage &&
+                { state.bgImage ?
                     <div className='colours__bg_img'
-                        style={{ backgroundImage: `url(${state.bgImage})`}} />
+                        style={{ backgroundImage: `url(${state.bgImage})`}} /> :
+                    null
                 }
 
-                { state.bgOpacity !== 0 &&
-                    <div className='colours__bg' style={bgColourStyle} />
+                { state.bgOpacity !== 0 ?
+                    <div className='colours__bg' style={bgColourStyle} /> :
+                    null
                 }
 
                 <div className='colours__btns'>
-                    { settings.shortcutOpts &&
+                    { settings.shortcutOpts ?
                         <a target='_blank' className='colours__btn--options'
-                            href='options.html' title='Options' />
+                            href='options.html' title='Options' /> :
+                        null
                     }
 
-                    { settings.shortcutNewTab &&
+                    { settings.shortcutNewTab ?
                         <a className='colours__btn--newtab' title='Default new tab'
-                            onClick={this.onClickNewTab} />
+                            onClick={this.onClickNewTab} /> :
+                        null
                     }
 
-                    { settings.shortcutImage && state.bgImage &&
+                    { (settings.shortcutImage && state.bgImage) ?
                         <a target='_blank' className='colours__btn--download'
-                            href={state.bgImage} title='Open image' />
+                            href={state.bgImage} title='Open image' /> :
+                        null
                     }
                 </div>
 
                 <div className='info'>
-                    { settings.showTime &&
-                        <Time hourFormat24={settings.time24hr} time={state.time} />
+                    { settings.showTime ?
+                        <Time hourFormat24={settings.time24hr} time={state.time} /> :
+                        null
                     }
 
-                    { settings.showDate &&
-                        <DateDisplay date={state.date} />
+                    { settings.showDate ?
+                        <DateDisplay date={state.date} /> :
+                        null
                     }
 
-                    { settings.showHex && state.bgOpacity !== 0 &&
-                        <Hex colour={state.colour} />
+                    { (settings.showHex && state.bgOpacity !== 0) ?
+                        <Hex colour={state.colour} /> :
+                        null
                     }
 
                     <Panels />
                 </div>
 
-                { settings.ticker && settings.colour !== 'solid' &&
-                    <History colour={state.colour} />
+                { (settings.ticker && settings.colour !== 'solid') ?
+                    <History colour={state.colour} /> :
+                    null
                 }
             </div>
         );

@@ -38,8 +38,9 @@ class Checkbox extends OptionsComponent {
                     }
                 </label>
 
-                { state.value &&
-                    <div className='options__content'>{props.children}</div>
+                { state.value ?
+                    <div className='options__content'>{props.children}</div> :
+                    null
                 }
             </div>
         );

@@ -138,7 +138,7 @@ class Panels extends Component {
         return (
             <div className={panelsClass}>
                 <Tabs onToggle={this.onClickTab} activeTab={state.open} canToggle>
-                    { state.showVisited &&
+                    { state.showVisited ?
                         <Tab name='Most visited'>
                             <ul className='panels__panel'>
                                 { state.topSites.map((site, i) => {
@@ -152,10 +152,11 @@ class Panels extends Component {
                                     );
                                 }) }
                             </ul>
-                        </Tab>
+                        </Tab> :
+                        null
                     }
 
-                    { state.showClosed &&
+                    { state.showClosed ?
                         <Tab name='Recently closed'>
                             <ul className='panels__panel'>
                                 { (state.recentlyClosed.length === 0) ?
@@ -172,10 +173,11 @@ class Panels extends Component {
                                     })
                                 }
                             </ul>
-                        </Tab>
+                        </Tab> :
+                        null
                     }
 
-                    { state.showDevices &&
+                    { state.showDevices ?
                         <Tab name='Other devices'>
                             <ul className='panels__panel panels__panel--devices'>
                                 { (state.devices.length === 0) ?
@@ -201,10 +203,11 @@ class Panels extends Component {
                                     })
                                 }
                             </ul>
-                        </Tab>
+                        </Tab> :
+                        null
                     }
 
-                    { state.showApps &&
+                    { state.showApps ?
                         <Tab name='Apps'>
                             <ul className='panels__panel panels__panel--apps'>
                                 { state.apps.map((app, i) => {
@@ -223,10 +226,11 @@ class Panels extends Component {
                                     );
                                 }) }
                             </ul>
-                        </Tab>
+                        </Tab> :
+                        null
                     }
 
-                    { state.showShortcuts &&
+                    { state.showShortcuts ?
                         <Tab name='Shortcuts'>
                             <ul className='panels__panel'>
                                 { state.shortcuts.map((shortcut, i) => {
@@ -240,7 +244,8 @@ class Panels extends Component {
                                     );
                                 }) }
                             </ul>
-                        </Tab>
+                        </Tab> :
+                        null
                     }
                 </Tabs>
             </div>
