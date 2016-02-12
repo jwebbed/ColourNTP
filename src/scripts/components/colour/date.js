@@ -1,7 +1,7 @@
-import React from 'react';
+import { h } from 'preact';
 
-var DateDisplay = (props) => {
-    return <h2 className='colours__date'>{props.date}</h2>;
-};
+const DateDisplay = ({ date }) => (
+    <h2 className='colours__date'>{date}</h2>
+);
 
 export default DateDisplay;

@@ -1,15 +1,11 @@
 import autobind from 'autobind-decorator';
-import React from 'react';
+import { h, Component } from 'preact';
 
 import OptionsComponent from './optionscomponent';
 import Chrome from '../../../modules/chrome';
 
 @autobind
 class Range extends OptionsComponent {
-    constructor (props) {
-        super(props);
-    }
-
     handleChange (e) {
         let key   = this.props.optkey,
             value = e.target.value;
@@ -19,13 +15,13 @@ class Range extends OptionsComponent {
         this.setState({ value: value });
     }
 
-    render () {
+    render (props, state) {
         return (
             <label>
-                <p>{this.props.label}:</p>
-                <input type='range' min='0' max='100' step='1' value={this.state.value}
+                <p>{props.label}:</p>
+                <input type='range' min='0' max='100' step='1' value={state.value}
                     onChange={this.handleChange} />
-                <span>({this.state.value}%)</span>
+                <span>({state.value}%)</span>
             </label>
         );
     }

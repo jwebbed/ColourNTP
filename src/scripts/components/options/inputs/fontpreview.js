@@ -1,13 +1,13 @@
 import autobind from 'autobind-decorator';
-import React from 'react';
+import { h, Component } from 'preact';
 
 import Chrome from '../../../modules/chrome';
 import WebFont from '../../../modules/webfont';
 
 @autobind
-class FontPreview extends React.Component {
-    constructor (props) {
-        super(props);
+class FontPreview extends Component {
+    constructor () {
+        super();
 
         this.state = {
             font: this.props.font
@@ -35,10 +35,8 @@ class FontPreview extends React.Component {
         });
     }
 
-    render () {
-        return (
-            <p>Preview: <span style={{ fontFamily: this.state.font }}>12:34:56</span></p>
-        );
+    render ({}, { font }) {
+        return <p>Preview: <span style={{ fontFamily: font }}>12:34:56</span></p>;
     }
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import { h, Component } from 'preact';
 
 import Checkbox from './inputs/checkbox';
 import Colour from './inputs/colour';
@@ -17,9 +17,9 @@ import Fonts from '../../constants/fonts';
 
 import Chrome from '../../modules/chrome';
 
-class Options extends React.Component {
-    constructor (props) {
-        super(props);
+class Options extends Component {
+    constructor () {
+        super();
 
         this.state = {
             settings: {}
@@ -34,9 +34,7 @@ class Options extends React.Component {
         });
     }
 
-    render () {
-        var settings = this.state.settings;
-
+    render ({}, { settings }) {
         return (
             <Tabs activeTab={0}>
                 <Tab name='General'>

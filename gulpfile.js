@@ -89,8 +89,11 @@ gulp.task('js', function (done) {
 
             return browserify(entry)
                 .transform(babelify, {
-                    presets: ['es2015', 'react'],
-                    plugins: ['transform-decorators-legacy'],
+                    presets: ['es2015'],
+                    plugins: [
+                        'transform-decorators-legacy',
+                        ['transform-react-jsx', { 'pragma': 'h' }]
+                    ]
                 })
                 .bundle()
                 .pipe(source(filename + '.bundle.js'))

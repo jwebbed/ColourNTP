@@ -1,15 +1,11 @@
 import autobind from 'autobind-decorator';
-import React from 'react';
+import { h, Component } from 'preact';
 
 import OptionsComponent from './optionscomponent';
 import Chrome from '../../../modules/chrome';
 
 @autobind
 class Dropdown extends OptionsComponent {
-    constructor (props) {
-        super(props);
-    }
-
     handleChange (e) {
         let key   = this.props.optkey,
             value = e.target.value;
@@ -19,12 +15,12 @@ class Dropdown extends OptionsComponent {
         this.setState({ value: value });
     }
 
-    render () {
+    render (props, state) {
         return (
             <label>
-                <span>{this.props.label}:</span>
-                <select value={this.state.value} onChange={this.handleChange}>
-                    { this.props.options.map((item, i) => {
+                <span>{props.label}:</span>
+                <select value={state.value} onChange={this.handleChange}>
+                    { props.options.map((item, i) => {
                         return <option key={i} value={item}>{item}</option>;
                     }) }
                 </select>

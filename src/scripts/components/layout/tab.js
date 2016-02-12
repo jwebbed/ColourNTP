@@ -1,11 +1,9 @@
-import React from 'react';
+import { h } from 'preact';
 
-var Tab = (props) => {
-    return (
-        <div className='tabs__tab__content'>
-            {props.children}
-        </div>
-    );
-};
+const Tab = ({ children }) => (
+    <div className='tabs__tab__content'>
+        {children}
+    </div>
+);
 
 export default Tab;

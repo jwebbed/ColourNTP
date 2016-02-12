@@ -1,10 +1,10 @@
-import React from 'react';
+import { h, Component } from 'preact';
 
 import Chrome from '../../../modules/chrome';
 
-class OptionsComponent extends React.Component {
-    constructor (props) {
-        super(props);
+class OptionsComponent extends Component {
+    constructor () {
+        super();
 
         this.state = {
             value: this.props.value

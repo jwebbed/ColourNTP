@@ -1,5 +1,5 @@
 import autobind from 'autobind-decorator';
-import React from 'react';
+import { h, Component } from 'preact';
 
 import Chrome from '../../modules/chrome';
 import Colours from '../../modules/colours';
@@ -14,9 +14,9 @@ import Panels from './panels';
 import History from './history';
 
 @autobind
-class NewTab extends React.Component {
-    constructor (props) {
-        super(props);
+class NewTab extends Component {
+    constructor () {
+        super();
 
         this.state = {
             settings     : {},
@@ -197,28 +197,28 @@ class NewTab extends React.Component {
         chrome.tabs.update(null, { url: 'chrome-search://local-ntp/local-ntp.html' });
     }
 
-    render () {
-        var settings = this.state.settings;
+    render (props, state) {
+        var settings = state.settings;
 
         if (Object.keys(settings).length === 0) {
-            return <div className={this.state.coloursClass} />;
+            return <div className={state.coloursClass} />;
         }
 
         // Background styles
         var bgColourStyle = {
-            backgroundColor : this.state.bgOpacity < 1 ?
-                Colours.rgba(this.state.colour, this.state.bgOpacity) :
-                this.state.colour
+            backgroundColor : state.bgOpacity < 1 ?
+                Colours.rgba(state.colour, state.bgOpacity) :
+                state.colour
         };
 
         return (
-            <div className={this.state.coloursClass}>
-                { this.state.bgImage &&
+            <div className={state.coloursClass}>
+                { state.bgImage &&
                     <div className='colours__bg_img'
-                        style={{ backgroundImage: `url(${this.state.bgImage})`}} />
+                        style={{ backgroundImage: `url(${state.bgImage})`}} />
                 }
 
-                { this.state.bgOpacity !== 0 &&
+                { state.bgOpacity !== 0 &&
                     <div className='colours__bg' style={bgColourStyle} />
                 }
 
@@ -233,30 +233,30 @@ class NewTab extends React.Component {
                             onClick={this.onClickNewTab} />
                     }
 
-                    { settings.shortcutImage && this.state.bgImage &&
+                    { settings.shortcutImage && state.bgImage &&
                         <a target='_blank' className='colours__btn--download'
-                            href={this.state.bgImage} title='Open image' />
+                            href={state.bgImage} title='Open image' />
                     }
                 </div>
 
                 <div className='info'>
                     { settings.showTime &&
-                        <Time hourFormat24={settings.time24hr} time={this.state.time} />
+                        <Time hourFormat24={settings.time24hr} time={state.time} />
                     }
 
                     { settings.showDate &&
-                        <DateDisplay date={this.state.date} />
+                        <DateDisplay date={state.date} />
                     }
 
-                    { settings.showHex && this.state.bgOpacity !== 0 &&
-                        <Hex colour={this.state.colour} />
+                    { settings.showHex && state.bgOpacity !== 0 &&
+                        <Hex colour={state.colour} />
                     }
 
                     <Panels />
                 </div>
 
                 { settings.ticker && settings.colour !== 'solid' &&
-                    <History colour={this.state.colour} />
+                    <History colour={state.colour} />
                 }
             </div>
         );

@@ -1,10 +1,10 @@
-import React from 'react';
+import { h, Component } from 'preact';
 
 import Tab from './tab';
 
-class Tabs extends React.Component {
-    constructor (props) {
-        super(props);
+class Tabs extends Component {
+    constructor () {
+        super();
 
         this.state = {
             activeTab: this.props.activeTab
@@ -34,14 +34,14 @@ class Tabs extends React.Component {
         }
     }
 
-    render () {
+    render (props, { activeTab }) {
         return (
             <div>
                 <ul className='tabs'>
-                    { this.props.children.map((tab, i) => {
+                    { props.children.map((tab, i) => {
                         if (tab) {
                             let tabClass = 'tabs__tab';
-                            if (this.state.activeTab === i) {
+                            if (activeTab === i) {
                                 tabClass += ' tabs__tab--active';
                             }
 
@@ -49,14 +49,14 @@ class Tabs extends React.Component {
                                 <li key={i}
                                     className={tabClass}
                                     onClick={this.handleTab.bind(this, i)}>
-                                    {tab.props.name}
+                                    {tab.attributes.name}
                                 </li>
                             );
                         }
                     }) }
                 </ul>
 
-                {this.props.children[this.state.activeTab]}
+                {props.children[activeTab]}
             </div>
         );
     }

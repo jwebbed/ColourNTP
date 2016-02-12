@@ -1,7 +1,5 @@
-import React from 'react';
-import { render } from 'react-dom';
+import { h, render } from 'preact';
 
 import NewTab from '../components/colour/newtab';
-
 
 render(<NewTab />, document.getElementById('newtab'));

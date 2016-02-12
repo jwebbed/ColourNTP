@@ -1,10 +1,10 @@
 import autobind from 'autobind-decorator';
-import React from 'react';
+import { h, Component } from 'preact';
 
 @autobind
-class History extends React.Component {
-    constructor (props) {
-        super(props);
+class History extends Component {
+    constructor () {
+        super();
 
         this.max = 10;
 
@@ -30,10 +30,10 @@ class History extends React.Component {
         stack.splice(0, stack.length - this.max);
     }
 
-    render () {
+    render (props, state) {
         return (
             <div className='history'>
-                { this.state.history.map((item, i) => {
+                { state.history.map((item, i) => {
                     let onItemClick = (e) => {
                         prompt('Copy to clipboard: Ctrl/⌘+C, Enter', item);
                     };

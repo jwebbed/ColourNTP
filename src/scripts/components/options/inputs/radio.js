@@ -1,7 +1,7 @@
-import React from 'react';
+import { h } from 'preact';
 
-var Radio = (props) => {
-    let onCheck = (e) => {
+const Radio = (props) => {
+    const onCheck = (e) => {
         props.onChange(props.value);
     };
 

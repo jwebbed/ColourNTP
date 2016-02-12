@@ -1,7 +1,7 @@
-import React from 'react';
+import { h } from 'preact';
 
-var Hex = (props) => {
-    return <h2 className='colours__hex'>{props.colour}</h2>;
-};
+const Hex = ({ colour }) => (
+    <h2 className='colours__hex'>{colour}</h2>
+);
 
 export default Hex;

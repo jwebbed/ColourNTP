@@ -1,5 +1,5 @@
 import autobind from 'autobind-decorator';
-import React from 'react';
+import { h, Component } from 'preact';
 
 import Tabs from '../layout/tabs';
 import Tab from '../layout/tab';
@@ -7,9 +7,9 @@ import Tab from '../layout/tab';
 import Chrome from '../../modules/chrome';
 
 @autobind
-class Panels extends React.Component {
-    constructor (props) {
-        super(props);
+class Panels extends Component {
+    constructor () {
+        super();
 
         this.state = {
             open           : -1,
@@ -128,9 +128,7 @@ class Panels extends React.Component {
         };
     }
 
-    render () {
-        var state = this.state;
-
+    render (props, state) {
         var panelsClass = 'panels';
 
         if (!state.showFavicons) {
